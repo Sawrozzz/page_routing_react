@@ -95,6 +95,11 @@ form[action$="destroy"] button {
   white-space: nowrap;
   border-width: 0;
 }
+.title{
+  font-size: 1.2em;
+    color: #333;
+    margin-bottom: 5px;
+}
 
 
 

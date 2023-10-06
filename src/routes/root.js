@@ -8,10 +8,10 @@ export default function Root() {
          <nav>
            <ul>          
              <li>
-               <Link to={`/products/`}>Products</Link>
+               <Link to={`products`}>Products</Link>
              </li>
              <li>
-               <Link to={`/carts/1`}>Cards </Link>
+               <Link to={`carts`}>Carts </Link>
              </li>
            </ul>
          </nav>

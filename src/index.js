@@ -7,31 +7,39 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import Root from "./routes/root";
-import Contact from "./routes/contact";
-import Card from "./routes/card";
+import Products from "./routes/products";
+import Cart from "./routes/carts";
+import reportWebVitals from './reportWebVitals';
+
+import For_product from "./routes/forProduct";
+import ForCart from "./routes/forCarts";
 
 const router = createBrowserRouter([
   {
     path:"products/:productId",
-    element : <div>For</div>
+    element : <For_product />
   },
-
+  {
+    path:"carts/:cartId",
+    element : <ForCart />
+  },
   {
     path: "/",
     element:<Root />,
     children: [
       {
-        path: "products/",
-        element: <Contact />,
+        path: "/products",
+        element: <Products />,
       },
       {
-        path: "carts/:cartId",
-        element: <Card />
-
+        path: "/carts",
+        element: <Cart />
       }
     ],
   },
-]);
+],
+
+);
 
 
 ReactDOM.createRoot(document.getElementById("root")).render(
@@ -41,3 +49,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <RouterProvider router={router} />
   </React.StrictMode>
 );
+
+reportWebVitals();
