@@ -18,11 +18,20 @@ const Cart = () => {
     <>
       <div className="cart-content">
         {
-          carts.map((item)=>{
+          carts.map((cart)=>{
             return(
               <>
-              <Link to={`/carts/${item.id}`}>
-              <p className="title"> cartID {item.id}</p>
+              <Link to={`/carts/${cart.id}`}>
+              {
+                cart.products.map((product)=>{
+                  return(
+                    <>
+                    <h1 className="title">{product.title} </h1>
+                    </>
+                  )
+                })
+              }
+        
               </Link>
               </>
             )

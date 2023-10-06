@@ -14,12 +14,12 @@ const ProductList = () => {
   return (
     <div className="productDetails">
       <p><b>ID:</b> {productId}</p>
-     <h2> Title: {product.title} </h2> 
+      <h2> Title: {product.title} </h2> 
       <p> <b>Description:</b> {product.description} </p>
       <p>
         <b>Price: </b> {product.price}
       </p>
-      <p>
+      <p>                               
         <img src={product.thumbnail} alt="" />
       </p> 
 

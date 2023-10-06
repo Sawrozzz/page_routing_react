@@ -11,16 +11,16 @@ import Products from "./routes/products";
 import Cart from "./routes/carts";
 import reportWebVitals from './reportWebVitals';
 
-import For_product from "./routes/forProduct";
-import ForCart from "./routes/forCarts";
+import ProductList from "./routes/productDetails";
+import ForCart from "./routes/cartDetails";
 
 const router = createBrowserRouter([
   {
     path:"products/:productId",
-    element : <For_product />
+    element : <ProductList />
   },
   {
-    path:"carts/:cartId",
+    path:"carts/:cartID",
     element : <ForCart />
   },
   {

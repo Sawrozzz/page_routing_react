@@ -1,11 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { useEffect } from 'react';
-
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const Products = () => {
-
   const [products, setProducts] = useState([]);
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -18,24 +15,23 @@ const Products = () => {
 
   return (
     <>
-    <div className='container'>
-    <div className='product_div'>
-      <div className="app">
-      {products.map((item) => {
-        return (
-          <>
-          <Link to={`/products/${item.id}`}>
-            <h1 className='title'>{item.title} </h1>
-            </Link>
-        </>
-        )
-      })}
-    </div>
-        
-    </div>
-    </div>
+      <div className="container">
+        <div className="product_div">
+          <div className="app">
+            {products.map((item) => {
+              return (
+                <>
+                  <Link to={`/products/${item.id}`}>
+                    <h1 className="title">{item.title} </h1>
+                  </Link>
+                </>
+              );
+            })}
+          </div>
+        </div>
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;
