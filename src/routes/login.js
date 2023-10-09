@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Outlet } from 'react-router-dom';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -68,6 +69,7 @@ function LoginPage() {
         {errorMessage && <p className="error-message">{errorMessage}</p>}
         <button type="submit">Login</button>
       </form>
+      <Outlet />
     </div>
   );
 }

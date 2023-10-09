@@ -6,8 +6,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link } from 'react-router-dom';
-
+import { Link, Outlet } from 'react-router-dom';
+// import LoginPage from './routes/login';
+// import { Outlet } from 'react-router-dom';
 
 export default function ButtonAppBar() {
   return (
@@ -26,11 +27,12 @@ export default function ButtonAppBar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             MyApp
           </Typography>
-          
-          <Button color='inherit'>Login</Button>
+         
+          <Button color='inherit'><Link to={`/login`}>LoginIn</Link></Button>
           <Button color="inherit">SignUp</Button>
-        </Toolbar>
-      </AppBar>
+          </Toolbar>
+          </AppBar>
     </Box>
+
   );
 }

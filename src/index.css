@@ -419,14 +419,40 @@ i {
   justify-content: center;
   width: 100%;
 }
-.main{
+/* .main{
   display: flex;
   height: 100%;
   width: 100%;
-}
+} */
 
 
 .head{
   text-align: center;
   background-color: blueviolet;
+}
+/* .container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+} */
+.app button{
+  height: 40px;
+  width: 10rem;
+  cursor: pointer;
+  background: greenyellow;
+  color: black;
+ /* margin-top: 22rem; */
+ /* margin-right: 60rem;   */
+}
+.container{
+  display: grid;
+}
+.container .buyitem{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: xx-large;
+  margin-top: 10px;
+}
+.container .buyitem span{
+  margin-left: 10px;
 }
