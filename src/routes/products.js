@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Card } from "@mui/material";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -16,18 +17,17 @@ const Products = () => {
   return (
     <>
       <div className="container">
-        <div className="product_div">
           <div className="app">
             {products.map((item) => {
               return (
                 <>
                   <Link to={`/products/${item.id}`}>
-                    <h1 className="title">{item.title} </h1>
+                    <Card variant="outlined"><p>{item.title}</p>{<img src={item.thumbnail}/>} </Card>
                   </Link>
                 </>
               );
             })}
-          </div>
+
         </div>
       </div>
     </>

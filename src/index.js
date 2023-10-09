@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom/client";
-import  Header  from "./Header"
+import  ButtonAppBar  from "./Header"
 import {
   createBrowserRouter,
   RouterProvider,
@@ -10,11 +10,16 @@ import Root from "./routes/root";
 import Products from "./routes/products";
 import Cart from "./routes/carts";
 import reportWebVitals from './reportWebVitals';
-
 import ProductList from "./routes/productDetails";
 import ForCart from "./routes/cartDetails";
+// import { Login } from "@mui/icons-material";
+// import LoginPage from "./routes/login";
 
 const router = createBrowserRouter([
+  // {
+  //   path:"/login",
+  //   element: <LoginPage />
+  // },
   {
     path:"products/:productId",
     element : <ProductList />
@@ -44,8 +49,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-
-  <Header />
+  <ButtonAppBar />
     <RouterProvider router={router} />
   </React.StrictMode>
 );
