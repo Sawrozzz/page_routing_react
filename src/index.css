@@ -100,44 +100,6 @@ form[action$="destroy"] button {
   color: #333;
   margin-bottom: 5px;
 }
-.app {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 5rem;
-}
-.app img {
-  height: 250px;
-  width: 250px;
-}
-.app p {
-  font-weight: 600;
-  text-align: center;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-.productDetails {
-  display: flex;
-  flex-direction: column-reverse;
-  justify-content: end;
-  align-items: center;
-  border: 1px solid;
-  width: 80vh;
-  margin-left: 40rem;
-  background-color: #7cebf3;
-  /* color: #3992ff; */
-}
-.myproductdetail {
-  margin-top: 5rem;
-  margin-right: 12rem;
-}
-.productDetails img {
-  width: 20rem;
-  border-radius: 10px;
-}
-.productDetails p {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-}
 
 #sidebar {
   width: 22rem;
@@ -433,14 +395,57 @@ i {
   align-items: center;
   margin-top: 1rem;
 } */
+.app {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
+}
+.app img {
+  height: 250px;
+  width: 250px;
+}
+/* .app button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} */
+.app p {
+  font-weight: 600;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+.productDetails {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: end;
+  align-items: center;
+  border: 1px solid;
+  width: 80vh;
+  margin-left: 40rem;
+  background-color: #7cebf3;
+  /* color: #3992ff; */
+}
+.myproductdetail {
+  margin-top: 5rem;
+  margin-right: 12rem;
+}
+.productDetails img {
+  width: 20rem;
+  border-radius: 10px;
+}
+.productDetails p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
 .app button {
   height: 40px;
   width: 10rem;
   cursor: pointer;
   background: greenyellow;
   color: black;
-  /* margin-top: 22rem; */
-  /* margin-right: 60rem;   */
+ 
 }
 .container {
   display: grid;
@@ -454,22 +459,37 @@ i {
   margin-left: 10px;
 }
 .totalcarts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5rem;
 }
-.add-to-cart {
-  border: 1px solid;
+.all-cart {
   height: 35rem;
   width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
   border-radius: 20px;
   /* gap: 5rem; */
 }
-.add-to-cart .cart-img {
+.forcardtotal{
+  text-align: center;
+}
+.all-cart .cart-img {
   height: 14rem;
   width: 14rem;
 }
-.add-to-cart .cart-des {
+/* .all-cart.cart-des {
   text-align: center;
+} */
+.all-cart button {
+  height: 40px;
+  width: 10rem;
+  cursor: pointer;
+  background: greenyellow;
+  color: black;
+}
+.all-cart p{
+  font-weight: 600;
+  text-align: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
