@@ -23,19 +23,18 @@ const Cart = () => {
   const carts = useSelector((state) => state.cart.carts);
   const onClickRemove = (remove) => {
     dispatch(RemovefromCart(remove));
-    console.log("its absouletely fine");
+    // console.log("its absouletely fine");
   };
 
   return (
     <>
-      <div className="app">
-        <h3>Total Carts Selected:{carts.length}</h3>
-
+    <h3 className="forcardtotal">Total Carts Selected:{carts.length}</h3>
+      <div className="totalcarts">
         {carts.map((item) => {
           return (
             <>
               <Card variant="outlined">
-                <div className="container">
+                <div className="all-cart">
                   <p>
                     <b className="cart-id">ID:</b> {item.id}
                   </p>
