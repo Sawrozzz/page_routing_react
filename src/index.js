@@ -12,6 +12,8 @@ import LoginPage from "./routes/login";
 import Sidebar from "./routes/Sidebar";
 import store from "./store";
 import { Provider } from "react-redux";
+import SignIn from "./routes/login";
+import SignUp from "./routes/signup";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginPage />,
+      },
+      {
+        path: "/signup",
+        element: <SignUp />,
       },
       {
         path: "products/:productId",

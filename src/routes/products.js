@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+// import { Link, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { Card } from "@mui/material";
 // import { Counter } from "../counter";
@@ -12,9 +12,9 @@ const Products = () => {
   // const [add, setAdd] = useState([]);
   const dispatch = useDispatch();
   const carts = useSelector((state) => state.cart.carts);
-  const onClickAdd = (buy) => {
+  const onClickAdd = (add) => {
     // setAdd(add.concat(buy));
-    dispatch(AddtoCart(buy));
+    dispatch(AddtoCart(add));
   };
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -34,6 +34,7 @@ const Products = () => {
               <>
                 <Card variant="outlined">
                   <p>{item.title}</p>
+                  <p>{item.brand}</p>
                   {<img src={item.thumbnail} />}{" "}
                   <button
                     onClick={() => {

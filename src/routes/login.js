@@ -1,77 +1,146 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import * as React from "react";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import CssBaseline from "@mui/material/CssBaseline";
+import TextField from "@mui/material/TextField";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import Checkbox from "@mui/material/Checkbox";
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
+import Box from "@mui/material/Box";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useState } from "react";
 
-function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    if (name === 'username') {
-      setUsername(value);
-    } else if (name === 'password') {
-      setPassword(value);
-    }
-    setErrorMessage('');
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-
-    // Perform basic validation here (e.g., checking for empty fields).
-    if (!username || !password) {
-      setErrorMessage('Please fill in all fields.');
-      return;
-    }
-
-    // You can add authentication logic here (e.g., sending data to a server).
-
-    // If authentication fails, show an error message.
-    if (!authenticateUser(username, password)) {
-      setErrorMessage('Invalid username or password.');
-      return;
-    }
-
-    // If authentication is successful, you can redirect the user to another page.
-    // Example: history.push('/dashboard');
-  };
-
-  // Simulated authentication function (replace with your actual logic).
-  const authenticateUser = (username, password) => {
-    // Add your authentication logic here.
-    // For this example, we're using hardcoded credentials.
-    return username === 'user' && password === 'password';
-  };
-
+function Copyright(props) {
   return (
-    <div className="login-page">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleInputChange}
-          />
-        </div>
-        {errorMessage && <p className="error-message">{errorMessage}</p>}
-        <button type="submit">Login</button>
-      </form>
-      <Outlet />
-    </div>
+    <Typography
+      variant="body2"
+      color="text.secondary"
+      align="center"
+      {...props}
+    >
+      {"Copyright © "}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{" "}
+      {new Date().getFullYear()}
+      {"."}
+    </Typography>
   );
 }
 
-export default LoginPage;
+
+const defaultTheme = createTheme();
+
+export default function SignIn() {
+ 
+  const handleSubmit = (event) => {
+    
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    localStorage.email = data.get("email")
+    localStorage.password = data.get("password")
+    localStorage.token = data.get("token")
+
+    fetch('https://dummyjson.com/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    username: data.get("email"),
+      password: data.get("password"),
+      
+  })
+})
+.then(res => res.json())
+.then((data) =>{
+
+  console.log(data)
+  console.log(data.token)
+  localStorage.token = data.token
+})
+
+
+};
+
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Log In
+          </Typography>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            noValidate
+            sx={{ mt: 1 }}
+          >
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Email Address"
+              name="email"
+              autoComplete="email"
+              autoFocus
+              value="kminchelle"
+        
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              value='0lelplR'
+              id="password"
+              autoComplete="current-password"
+            />
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              log in 
+            </Button>
+            <Grid container>
+              <Grid item xs>
+                <Link href="#" variant="body2">
+                  Forgot password?
+                </Link>
+              </Grid>
+              <Grid item>
+                <Link href="/signup" variant="body2">
+                  {"Don't have an account? Sign Up"}
+                </Link>
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  );
+}
