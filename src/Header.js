@@ -25,7 +25,7 @@ export default function ButtonAppBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            MyApp
+           <Link to={'/'}>My App</Link>
           </Typography>
          
           <Button color='inherit'><Link to={`/login`}>LoginIn</Link></Button>
