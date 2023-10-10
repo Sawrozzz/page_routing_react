@@ -95,27 +95,27 @@ form[action$="destroy"] button {
   white-space: nowrap;
   border-width: 0;
 }
-.title{
+.title {
   font-size: 1.2em;
-    color: #333;
-    margin-bottom: 5px;
+  color: #333;
+  margin-bottom: 5px;
 }
-.app{
+.app {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 5rem;
 }
-.app img{
+.app img {
   height: 250px;
   width: 250px;
 }
-.app p{
+.app p {
   font-weight: 600;
   text-align: center;
- font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
-.productDetails{
+.productDetails {
   display: flex;
   flex-direction: column-reverse;
   justify-content: end;
@@ -126,20 +126,18 @@ form[action$="destroy"] button {
   background-color: #7cebf3;
   /* color: #3992ff; */
 }
-.myproductdetail{
- margin-top: 5rem;
- margin-right: 12rem;
+.myproductdetail {
+  margin-top: 5rem;
+  margin-right: 12rem;
 }
-.productDetails img{
+.productDetails img {
   width: 20rem;
   border-radius: 10px;
-
 }
-.productDetails p{
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.productDetails p {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
-
-
 
 #sidebar {
   width: 22rem;
@@ -425,8 +423,7 @@ i {
   width: 100%;
 } */
 
-
-.head{
+.head {
   text-align: center;
   background-color: blueviolet;
 }
@@ -436,23 +433,43 @@ i {
   align-items: center;
   margin-top: 1rem;
 } */
-.app button{
+.app button {
   height: 40px;
   width: 10rem;
   cursor: pointer;
   background: greenyellow;
   color: black;
- /* margin-top: 22rem; */
- /* margin-right: 60rem;   */
+  /* margin-top: 22rem; */
+  /* margin-right: 60rem;   */
 }
-.container{
+.container {
   display: grid;
 }
-.container .buyitem{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+.container .buyitem {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   font-size: xx-large;
   margin-top: 10px;
 }
-.container .buyitem span{
+.container .buyitem span {
   margin-left: 10px;
+}
+.totalcarts {
+}
+.add-to-cart {
+  border: 1px solid;
+  height: 35rem;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 20px;
+  /* gap: 5rem; */
+}
+.add-to-cart .cart-img {
+  height: 14rem;
+  width: 14rem;
+}
+.add-to-cart .cart-des {
+  text-align: center;
 }

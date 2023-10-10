@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { useEffect } from "react";
 import { Card } from "@mui/material";
+// import { Counter } from "../counter";
+import { useDispatch } from "react-redux";
+import { AddtoCart } from "./cartSlice";
+import { useSelector } from "react-redux";
 
 const Products = () => {
   const [products, setProducts] = useState([]);
-  const [add, setAdd] = useState([]);
+  // const [add, setAdd] = useState([]);
+  const dispatch = useDispatch();
+  const carts = useSelector((state) => state.cart.carts);
   const onClickAdd = (buy) => {
-    setAdd(add.concat(buy));
+    // setAdd(add.concat(buy));
+    dispatch(AddtoCart(buy));
   };
   useEffect(() => {
     fetch("https://dummyjson.com/products")
@@ -15,7 +22,6 @@ const Products = () => {
       .then((data) => {
         console.log(data);
         setProducts(data.products);
-
       });
   }, []);
 
@@ -23,30 +29,24 @@ const Products = () => {
     <>
       <div className="container">
         <div className="app">
-        <div className="buyitem"><span>Add what you want to buy:</span>{add.length}</div>
-
           {products.map((item) => {
             return (
               <>
-                <Link to={`/products/${item.id}`}>
-                  <Card variant="outlined">
-                    <p>{item.title}</p>
-                    {<img src={item.thumbnail} />}{" "}
-                  </Card>
-          
-                </Link>
-                <button
-                  onClick={() => {
-                    onClickAdd(item);
-                  }}
-                >
-                  Add To Cart
-                </button>
+                <Card variant="outlined">
+                  <p>{item.title}</p>
+                  {<img src={item.thumbnail} />}{" "}
+                  <button
+                    onClick={() => {
+                      onClickAdd(item);
+                    }}
+                  >
+                    Add To Cart
+                  </button>
+                </Card>
               </>
             );
           })}
         </div>
-
       </div>
     </>
   );
