@@ -497,3 +497,8 @@ i {
   background: #000;
   margin-left: 10rem;
 } */
+.profile_img{
+  height: 60px;
+  width: 60px;
+  border-radius: 60%;
+}

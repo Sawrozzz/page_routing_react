@@ -12,8 +12,9 @@ import LoginPage from "./routes/login";
 import Sidebar from "./routes/Sidebar";
 import store from "./store";
 import { Provider } from "react-redux";
-import SignIn from "./routes/login";
+// import SignIn from "./routes/login";
 import SignUp from "./routes/signup";
+import Profile from "./routes/profile";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/carts/:cartId",
         element: <ForCart />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
       },
     ],
   },

@@ -10,6 +10,7 @@ import { Link,} from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {login, logout} from './loginSlice';
 import { useEffect } from 'react';
+import Profile from './profile';
 
 export default function ButtonAppBar() {
   const userInfo = useSelector((state) => state.login);
@@ -41,13 +42,27 @@ export default function ButtonAppBar() {
         
         <div className='nav-links'>
           {
-          userInfo.isLoggedIn ? (<Button onClick={handleLogout}
+          userInfo.isLoggedIn ? (
+            <>
+            <p className='login_name'> Welcome Saroj</p>
+          
+            <Button onClick={handleLogout}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
             Log Out
-          </Button>):(<><Link to = "/signup">Signup</Link>
+            
+          </Button>
+          <Link to={`/profile`}><img className='profile_img' src='https://cdn3.vectorstock.com/i/1000x1000/53/42/user-member-avatar-face-profile-icon-vector-22965342.jpg'></img>
+          </Link>
+          
+            </>
+        
+
+          
+          ):(<>
+            <Link to = "/signup">Signup</Link>
           <Link to = "/login">Login</Link></>)
           }
         
