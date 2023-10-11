@@ -11,8 +11,11 @@ import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useDispatch, useSelector } from 'react-redux';
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
+import { login, logout } from './loginSlice';
+import { Navigate } from "react-router-dom";
+// import { useState } from "react";
 
 function Copyright(props) {
   return (
@@ -36,14 +39,19 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
+  const dispatch = useDispatch();
+  function Logout(){
+    localStorage.removeItem("token");
+    dispatch(logout());
+  }
  
   const handleSubmit = (event) => {
-    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    localStorage.email = data.get("email")
-    localStorage.password = data.get("password")
-    localStorage.token = data.get("token")
+    // localStorage.email = data.get("email")
+    // localStorage.password = data.get("password")
+    // localStorage.token = data.get("token")
 
     fetch('https://dummyjson.com/auth/login', {
   method: 'POST',
@@ -56,40 +64,35 @@ export default function SignIn() {
 })
 .then(res => res.json())
 .then((data) =>{
-
   console.log(data)
-  console.log(data.token)
-  localStorage.token = data.token
+  localStorage.setItem("token", data.token);
+  dispatch(login({token: data.token}));
 })
 
 
 };
-
-
-  return (
+return (<>
+  {isLoggedIn ? (
+        <Navigate to="/" replace={true} />
+  ) : (
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Log In
+            Log in
           </Typography>
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            noValidate
-            sx={{ mt: 1 }}
-          >
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -100,7 +103,6 @@ export default function SignIn() {
               autoComplete="email"
               autoFocus
               value="kminchelle"
-        
             />
             <TextField
               margin="normal"
@@ -109,21 +111,21 @@ export default function SignIn() {
               name="password"
               label="Password"
               type="password"
-              value='0lelplR'
               id="password"
               autoComplete="current-password"
+              value="0lelplR"
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+              <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              log in 
+              Log In
             </Button>
             <Grid container>
               <Grid item xs>
@@ -132,7 +134,7 @@ export default function SignIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="/signup" variant="body2">
+                <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
@@ -142,5 +144,7 @@ export default function SignIn() {
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    )}
+    </>
   );
 }
