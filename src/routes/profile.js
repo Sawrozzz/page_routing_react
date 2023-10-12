@@ -1,16 +1,13 @@
-import React, { useEffect, useState } from "react";
+import { useSelector} from "react-redux";
 
 const Profile = () => {
-  const [user, setUser] = useState({});
-
-  useEffect(() => {
-    fetch("https://dummyjson.com/users/1")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setUser(data);
-      });
-  }, []);
+  const id = useSelector((state)=>state.login.id)
+  const email = useSelector((state)=>state.login.email)
+  const firstName = useSelector((state)=>state.login.firstName)
+  const lastName = useSelector((state)=>state.login.lastName)
+  const username = useSelector((state)=>state.login.username)
+  const gender = useSelector((state)=>state.login.gender)
+  const image = useSelector((state)=>state.login.image)
 
   return (
     <>
@@ -19,53 +16,33 @@ const Profile = () => {
       <hr></hr>
         <p>
           {" "}
-          <b>ID:</b>
-          {user.id}
+          <b>ID:{id}</b>
         </p>
+        <img src={image}></img>
+        <p>
+        {" "}
+        <b>UserName:</b>
+        {username}
+      </p>
         <p>
           {" "}
           <b>FirstName:</b>
-          {user.firstName}
+          {firstName}
         </p>
         <p>
           {" "}
           <b>LastName:</b>
-          {user.lastName}
-        </p>
-        <p>
-          {" "}
-          <b>MaidenName:</b>
-          {user.maidenName}
-        </p>
-        <p>
-          {" "}
-          <b>Age:</b>
-          {user.age}
+          {lastName}
         </p>
         <p>
           {" "}
           <b>Gender:</b>
-          {user.gender}
+          {gender}
         </p>
         <p>
           {" "}
           <b>Email:</b>
-          {user.email}
-        </p>
-        <p>
-          {" "}
-          <b>Phone No:</b>
-          {user.phone}
-        </p>
-        <p>
-          {" "}
-          <b>UserName:</b>
-          {user.username}
-        </p>
-        <p>
-          {" "}
-          <b>Image:</b>
-          {user.image}
+          {email}
         </p>
       </div>
     </>

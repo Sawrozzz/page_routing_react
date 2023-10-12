@@ -1,77 +1,74 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
-import Grid from "@mui/material/Grid";
-import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useDispatch, useSelector } from 'react-redux';
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { login, logout } from './loginSlice';
+import { login } from './loginSlice';
 import { Navigate } from "react-router-dom";
-// import { useState } from "react";
 
 function Copyright(props) {
   return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
         Your Website
-      </Link>{" "}
+      </Link>{' '}
       {new Date().getFullYear()}
-      {"."}
+      {'.'}
     </Typography>
   );
 }
-
-
 const defaultTheme = createTheme();
-
-export default function SignIn() {
+export default function Login() {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
   const dispatch = useDispatch();
-  function Logout(){
-    localStorage.removeItem("token");
-    dispatch(logout());
-  }
- 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    // localStorage.email = data.get("email")
-    // localStorage.password = data.get("password")
-    // localStorage.token = data.get("token")
 
     fetch('https://dummyjson.com/auth/login', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    username: data.get("email"),
-      password: data.get("password"),
-      
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        username: data.get('email'),
+        password: data.get('password'),
+      })
+    })
+  .then(res => res.json())
+  .then((data) => {
+    console.log(data);
+    localStorage.setItem("token", data.token);
+    localStorage.setItem("email", data.email);
+    localStorage.setItem("username", data.username);
+    localStorage.setItem("image", data.image);
+    localStorage.setItem("firstName", data.firstName);
+    localStorage.setItem("lastName", data.lastName);
+
+    dispatch(login(
+      {
+      token: data.token, 
+      email: data.email, 
+      username: data.username, 
+      image: data.image, 
+      firstName: data.firstName, 
+      lastName: data.lastName 
+    }
+      ))  
+    ;
   })
-})
-.then(res => res.json())
-.then((data) =>{
-  console.log(data)
-  localStorage.setItem("token", data.token);
-  dispatch(login({token: data.token}));
-})
-
-
-};
-return (<>
+  };
+  return (<>
   {isLoggedIn ? (
         <Navigate to="/" replace={true} />
   ) : (
