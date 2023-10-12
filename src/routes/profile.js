@@ -15,6 +15,8 @@ const Profile = () => {
   return (
     <>
       <div className="myProfile">
+      <h1>User Information</h1>
+      <hr></hr>
         <p>
           {" "}
           <b>ID:</b>
@@ -24,6 +26,11 @@ const Profile = () => {
           {" "}
           <b>FirstName:</b>
           {user.firstName}
+        </p>
+        <p>
+          {" "}
+          <b>LastName:</b>
+          {user.lastName}
         </p>
         <p>
           {" "}

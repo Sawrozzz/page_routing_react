@@ -9,10 +9,20 @@ import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout } from "./loginSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Profile from "./profile";
 
 export default function ButtonAppBar() {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    fetch("https://dummyjson.com/users/1")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setUser(data);
+      });
+  }, []);
   const userInfo = useSelector((state) => state.login);
 
   console.log(userInfo, "userInfo");
@@ -43,8 +53,14 @@ export default function ButtonAppBar() {
           <div className="nav-links">
             {userInfo.isLoggedIn ? (
               <>
-                <p className="login_name"> Welcome Saroj</p>
-                <Link to={`/`}>
+              <Link to={`/profile`}>
+              <img
+                className="profile_img"
+                src={user.image}
+              ></img>
+            </Link>
+                <p className="login_name">Welcome {" "} {user.firstName}{" "}{user.lastName} </p>
+                <Link to={`/login`}>
                 <Button
                 onClick={handleLogout}
                 fullWidth
@@ -56,12 +72,7 @@ export default function ButtonAppBar() {
                 
                 </Link>
            
-                <Link to={`/profile`}>
-                  <img
-                    className="profile_img"
-                    src="https://cdn3.vectorstock.com/i/1000x1000/53/42/user-member-avatar-face-profile-icon-vector-22965342.jpg"
-                  ></img>
-                </Link>
+               
               </>
             ) : (
               <>
