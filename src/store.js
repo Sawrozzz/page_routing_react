@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "./routes/cartSlice";
-import loginReducer from "./routes/loginSlice";
+import loginSliceReducer from "./routes/loginSlice";
 export default configureStore({
+  //This is OK
   reducer: {
     cart: cartReducer,
-    login:loginReducer
+    login:loginSliceReducer
   },
 });

@@ -12,24 +12,22 @@ const ProductList = () => {
       });
   }, [productId]);
   return (
-    <div className="myproductdetail">
-      <div className="productDetails">
+    <div className="productDetails">
         <p>
-          {" "}
-          <b>Description:</b> {product.description}{" "}
-        </p>
-        <p>
-          <b>Price: </b> {product.price}
-        </p>
-        <p>
-          <b>ID:</b> {productId}
-        </p>
-        <p>
-          <img src={product.thumbnail} alt="" />
+            <b>ID:</b> {productId}
         </p>
         <h2> Title: {product.title} </h2>
-      </div>
+        <p>
+            {' '}
+            <b>Description:</b> {product.description}{' '}
+        </p>
+        <p>
+            <b>Price: </b> {product.price}
+        </p>
+        <p>
+            <img src={product.thumbnail} alt="" />
+        </p>
     </div>
-  );
+)
 };
 export default ProductList;

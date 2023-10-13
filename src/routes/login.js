@@ -16,6 +16,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from './loginSlice';
 import { Navigate } from "react-router-dom";
 
+//This is OK
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -54,7 +56,6 @@ export default function Login() {
     localStorage.setItem("image", data.image);
     localStorage.setItem("firstName", data.firstName);
     localStorage.setItem("lastName", data.lastName);
-
     dispatch(login(
       {
       token: data.token, 
@@ -63,9 +64,8 @@ export default function Login() {
       image: data.image, 
       firstName: data.firstName, 
       lastName: data.lastName 
-    }
-      ))  
-    ;
+    })
+    )  
   })
   };
   return (<>
@@ -89,7 +89,9 @@ export default function Login() {
           <Typography component="h1" variant="h5">
             Log in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" 
+          onSubmit={handleSubmit}
+           noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required

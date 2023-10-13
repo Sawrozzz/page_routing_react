@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { act } from "react-dom/test-utils";
+import { act } from "react-dom/test-utils";
 
 export const loginSlice = createSlice({
-
-  //This is OK
   name: "login",
   initialState: {
     isLoggedIn: false,
@@ -25,10 +23,13 @@ export const loginSlice = createSlice({
       state.username = action.payload.username;
       state.id = action.payload.id;
       state.image = action.payload.image;
+
+
       state.isLoggedIn = true;
     },
-    logout: (state) => {
+    logout: (state, action) => {
       state.isLoggedIn = false;
+ 
       state.email = null;
       state.username = null;
       state.firstName = null;
