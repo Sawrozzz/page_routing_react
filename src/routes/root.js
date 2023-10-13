@@ -1,10 +1,10 @@
 import { Outlet,  } from "react-router-dom";
-import ButtonAppBar from "./Header";
+import Header from "./Header";
 export default function Root() {
   return (
     <>
       <div className="main">
-        <ButtonAppBar />
+        <Header />
         <div id="detail">
           <Outlet />
         </div>

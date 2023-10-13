@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import SignUp from "./routes/signup";
 import Profile from "./routes/profile";
 import CategoryDetails from "./routes/categoryDetails";
+import SearchBar from "./routes/SearchBar";
 
 const router = createBrowserRouter([
   {
@@ -34,9 +35,18 @@ const router = createBrowserRouter([
             path: '/categories/:categoryID',
             element: <CategoryDetails />,
         },
+        {
+          path:'/catagories/:searchTerm',
+          element: <SearchBar />
+
+        },
           {
             path: "/carts",
             element: <Cart />,
+          },
+          {
+            path:'/products/:searchItem',
+            element:<SearchBar />
           },
         ],
       },
